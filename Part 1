@@ -1,1 +1,106 @@
+ 1. Howdoyoudeclare and initialise an array in JavaScript?
+ Explain the difference between an array and an object in JavaScript.
+
+Using the Array Constructor:
+    let array = new Array(1, 2, 3, 4, 5); 
+    let emptyArray = new Array(5);
+Using Array Literals
+    let array = [1, 2, 3, 4, 5]; 
+    let emptyArray = [];
+
+
+ 2. String Manipulation:
+ Write a JS function to check if a given string is a palindrome.
+
+
+function isPalindrome(str) {
+    let cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+   return cleanedStr === cleanedStr.split('').reverse().join('');
+}
+// Example Usage
+console.log(isPalindrome("A man, a plan, a canal, Panama")); // true
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello")); // false
+
+
+ 3. Conditional Statements and Operators:
+ Write a JS code snippet to determine if a number is even or odd.
+
+function isEvenOrOdd(number) {
+    if (number % 2 === 0) {
+        return "Even";
+    } else {
+        return "Odd";
+    }
+}
+
+// Example Usage
+console.log(isEvenOrOdd(4)); // "Even"
+console.log(isEvenOrOdd(7)); // "Odd"
+console.log(isEvenOrOdd(0)); // "Even"
+
+
+
+ 4. Functions and Methods:
+ Howdoyoudefine a function that takes two integers as parameters and returns their sum in JavaScript?
+
+function addNumbers(a, b) {
+    return a + b;
+}
+
+// Example Usage
+console.log(addNumbers(5, 10)); // Output: 15
+console.log(addNumbers(-3, 7)); // Output: 4
+
+
+ 5. Object-Oriented Programming (OOP):
+ Explain the concept of encapsulation in OOP with an example in JavaScript.
+
+Encapsulation is one of the core principles of Object-Oriented Programming (OOP). 
+It refers to bundling data (properties) and methods (functions) that operate on the data into a single unit, typically a class or object. 
+
+class BankAccount {
+   
+    #balance;
+
+    constructor(accountHolder, initialBalance) {
+        this.accountHolder = accountHolder; // Public property
+        this.#balance = initialBalance; // Private property
+    }
+
+   
+    getBalance() {
+        return `Balance for ${this.accountHolder}: $${this.#balance}`;
+    }
+
+    
+    deposit(amount) {
+        if (amount > 0) {
+            this.#balance += amount;
+            return `Deposited $${amount}. New balance: $${this.#balance}`;
+        } else {
+            return "Deposit amount must be positive!";
+        }
+    }
+
+    
+    withdraw(amount) {
+        if (amount > 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+            return `Withdrew $${amount}. New balance: $${this.#balance}`;
+        } else {
+            return "Invalid withdrawal amount!";
+        }
+    }
+}
+
+// Example Usage
+const account = new BankAccount("Alice", 1000);
+
+console.log(account.getBalance()); // Balance for Alice: $1000
+console.log(account.deposit(500)); // Deposited $500. New balance: $1500
+console.log(account.withdraw(200)); // Withdrew $200. New balance: $1300
+
+// Attempting to access private field directly (will cause an error)
+console.log(account.#balance); // SyntaxError: Private field '#balance' must be declared in an enclosing class
 
